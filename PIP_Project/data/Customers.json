@@ -1,0 +1,49 @@
+{
+  "Customer": [
+    {
+      "Name": "Dinesh",
+      "Email": "dinesh@gmail.com",
+      "Mobile": 9894820313,
+      "Address": "51 f4, thiruvalluvar street, east tambaram",
+      "State": "Tamilnadu",
+      "Pin": "600059",
+      "ActiveId": 1
+    },
+    {
+      "Name": "Anand",
+      "Email": "anand@gmail.com",
+      "Mobile": 9754624897,
+      "Address": "100 B, kambar street, Medavakkam, Chennai",
+      "State": "Tamilnadu",
+      "Pin": "600119",
+      "ActiveId": 2
+    },
+    {
+      "Name": "Rajan",
+      "Email": "rajan@gmail.com",
+      "Mobile": 6478542165,
+      "Address": "199, south car street, Madurai",
+      "State": "Madurai",
+      "Pin": "654321",
+      "ActiveId": 3550
+    },
+    {
+      "Name": "Sreedhar",
+      "Email": "sree@gmail.com",
+      "Mobile": 8765421548,
+      "Address": "175, wilson gardon, bangalore",
+      "State": "Bangalore",
+      "Pin": "543275",
+      "ActiveId": 9900
+    },
+    {
+      "Name": "Prabhakaran",
+      "Email": "prabha@gmail.com",
+      "Mobile": 7856894235,
+      "Address": "52 T3, Rachana builders, Madipakkam, chennai",
+      "State": "Chennai",
+      "Pin": "600172",
+      "ActiveId": 4998
+    }
+  ]
+}
