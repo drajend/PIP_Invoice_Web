@@ -108,7 +108,7 @@
                       </tbody>
                   </table>
              </div>
-          </div>
+          </div>          
         </div>
         <div class="card mb-3" id="divAddCustomer">
             <div class="card-header">
@@ -122,7 +122,7 @@
                     <input type="email" class="form-control" id="txtEmail" placeholder="Email"/>
                 </div>
                 <div class="form-group">
-                    <input type="number" class="form-control" id="txtMobile" placeholder="Mobile No"/>
+                    <input type="text" class="form-control" id="txtMobile" maxlength="10" placeholder="Mobile No"/>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="txtAddress" placeholder="Address"/>
@@ -131,18 +131,25 @@
                     <input type="text" class="form-control" id="txtState" placeholder="State"/>
                 </div>
                 <div class="form-group">
-                    <input type="number" class="form-control" id="txtPin" placeholder="PinCode"/>
+                    <input type="text" class="form-control" id="txtPin" maxlength="6" placeholder="PinCode"/>
                 </div>
                 <div>
                     <button class="btn btn-success" id="btnAddCus">Add</button>
                     <button class="btn btn-danger" id="btnCancelCus">Cancel</button>
                 </div>
             </div>
-        </div>
+        </div>        
     </div>
       <div id="divEditCus" style="display:none;">
-          <label><h4><i class='fa fa-pencil' aria-hidden='true'></i> Edit Customer</h4></label>
-          <form class="form" role="form">
+          
+      </div>
+      <!--Modal-->
+      <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">      
+      <div class="modal-body">
+        <label><h4><i class='fa fa-pencil' aria-hidden='true'></i> Edit Customer</h4></label>   
+          <div id="EditForm">
                 <div class="form-group">
                     <input type="text" class="form-control" id="txtNameEdit" placeholder="Customer Name"/>
                 </div>
@@ -150,7 +157,7 @@
                     <input type="email" class="form-control" id="txtEmailEdit" placeholder="Email"/>
                 </div>
                 <div class="form-group">
-                    <input type="number" class="form-control" id="txtMobileEdit" placeholder="Mobile No"/>
+                    <input type="text" class="form-control" id="txtMobileEdit" maxlength="10" placeholder="Mobile No"/>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="txtAddressEdit" placeholder="Address"/>
@@ -159,10 +166,17 @@
                     <input type="text" class="form-control" id="txtStateEdit" placeholder="State"/>
                 </div>
                 <div class="form-group">
-                    <input type="number" class="form-control" id="txtPinEdit" placeholder="PinCode"/>
+                    <input type="text" class="form-control" id="txtPinEdit" maxlength="6" placeholder="PinCode"/>
                 </div>
-         </form>
+         </div>
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success pull-left">Update</button>
+        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
     <footer class="sticky-footer">

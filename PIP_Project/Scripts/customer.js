@@ -34,33 +34,41 @@ function LoadCustomerSuccess(data) {
 $("#tblCustomer tbody ").on('click', 'button#btnEdit', function (e) {
     var data = table.row($(this).parents('tr')).data();
     console.log(data);
-    //alert("Hello " + data.Name + " Your address is " + data.Address);
+    //alert("Hello " + data.Name + " Your address is " + data.Address);    
+    document.getElementById("divEditCus").style.display = "block";
+    $("#txtNameEdit").val(data.Name);
+    $("#txtEmail").val(data.Email);
+    $("#txtMobileEdit").val(data.Mobile);
+    $("#txtAddressEdit").val(data.Address);
+    $("#txtStateEdit").val(data.State);
+    $("#txtPinEdit").val(data.Pin);
+    $('#mymodal').modal('show');
+    //var modal = bootbox.dialog({        
+    //    message: $("#divEditCus").html(),
+    //    buttons: [
+    //        {
+    //            label: "Update",
+    //            className: "btn btn-success pull-left",
+    //            callback: function () {                    
 
-    var modal = bootbox.dialog({        
-        message: $("#divEditCus").html(),
-        buttons: [
-            {
-                label: "Update",
-                className: "btn btn-success pull-left",
-                callback: function () {                    
+    //                return false;
+    //            }
+    //        },
+    //        {
+    //            label: "Cancel",
+    //            className: "btn btn-danger pull-left",
+    //            callback: function () {                    
+    //            }
+    //        }
+    //    ],
+    //    show: false,
+    //    onEscape: function () {
+    //        modal.modal("hide");
+    //    }
+    //});
 
-                    return false;
-                }
-            },
-            {
-                label: "Cancel",
-                className: "btn btn-danger pull-left",
-                callback: function () {                    
-                }
-            }
-        ],
-        show: false,
-        onEscape: function () {
-            modal.modal("hide");
-        }
-    });
-
-    modal.modal("show");
+    //modal.modal("show");
+   // document.getElementById("divEditCus").style.display = "none";
 });
 
 $("#tblCustomer tbody ").on('click', 'button#btnDeleteCus', function (e) {
