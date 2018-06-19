@@ -116,25 +116,25 @@
             </div>
             <div class="card-body">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="txtName" placeholder="Customer Name"/>
+                    <input type="text" class="form-control" id="txtName" required placeholder="Customer Name"/>
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" id="txtEmail" placeholder="Email"/>
+                    <input type="email" class="form-control" id="txtEmail" required placeholder="Email"/>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="txtMobile" maxlength="10" placeholder="Mobile No"/>
+                    <input type="text" class="form-control" id="txtMobile" required maxlength="10" placeholder="Mobile No"/>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="txtAddress" placeholder="Address"/>
+                    <input type="text" class="form-control" id="txtAddress" required placeholder="Address"/>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="txtState" placeholder="State"/>
+                    <input type="text" class="form-control" id="txtState" required placeholder="State"/>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="txtPin" maxlength="6" placeholder="PinCode"/>
+                    <input type="text" class="form-control" id="txtPin" required maxlength="6" placeholder="PinCode"/>
                 </div>
                 <div>
-                    <button class="btn btn-success" id="btnAddCus">Add</button>
+                    <button type="submit" class="btn btn-success" id="btnAddCus">Add</button>
                     <button class="btn btn-danger" id="btnCancelCus">Cancel</button>
                 </div>
             </div>

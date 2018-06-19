@@ -75,14 +75,25 @@ $("#tblCustomer tbody ").on('click', 'button#btnDeleteCus', function (e) {
     var data = table.row($(this).parents('tr')).data();
     custId = data.ActiveId;
     confirmBox("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Are you sure, Do you want to delete this customer?", DeleteCustomer)
-
+    //DeleteCustomer
 });
 
 function DeleteCustomer(data) {
     if (data)
-        toastr["success"]("Customer deleted successfully!!!");
+        CallControllerMethod("customer.aspx", "DeleteCustomer", DeleteCustomerSuccess, "", "ActiveId", custId);
     else
         custId = 0;
+}
+
+function DeleteCustomerSuccess(data) {
+    if (data != "success") {
+        setInterval(function () {
+            table.ajax.reload();
+        }, 1000);
+        toastr["success"]("Customer Deleted successfully!!");
+    }
+    else
+        toastr["error"](data);
 }
 
 $("#btnAddcustomer").click(function () {
@@ -111,7 +122,7 @@ function AddCustomerSuccess(data) {
     if (data.Response.Result) {
         setInterval(function () {
             table.ajax.reload();
-        }, 2000);
+        }, 1000);
         document.getElementById("divCustomer").style.display = "block";
         document.getElementById("divAddbtn").style.display = "block";
         document.getElementById("divAddCustomer").style.display = "none";

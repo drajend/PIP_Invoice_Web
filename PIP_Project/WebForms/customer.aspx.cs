@@ -13,6 +13,7 @@ namespace PIP_Project.WebForms
 {
     public partial class Customer : System.Web.UI.Page
     {
+        public static string customerPath = HttpContext.Current.Server.MapPath("~/data/Customers.json");
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -31,7 +32,7 @@ namespace PIP_Project.WebForms
             oResponse.Response = new PIP_model.ResponseMessage();
             try
             {
-                oResponse.c_CustomerJson = File.ReadAllText(HttpContext.Current.Server.MapPath("~/data/Customers.json"));
+                oResponse.c_CustomerJson = File.ReadAllText(customerPath);
                 if(oResponse.c_CustomerJson!=null)                
                     oResponse.Response.EMessage = "Customer Record fetched successfully!!";                                
                 else                
@@ -66,7 +67,7 @@ namespace PIP_Project.WebForms
             {
                 Random _rdm = new Random();
                 ActiveID = _rdm.Next(_min, _max);
-                jsonString = File.ReadAllText(HttpContext.Current.Server.MapPath("~/data/Customers.json"));
+                jsonString = File.ReadAllText(customerPath);
                 DataSet dsCustomer = JsonConvert.DeserializeObject<DataSet>(jsonString);
                 DataTable dtCustomer = dsCustomer.Tables["Customer"];
                 idCount = (from tCount in dtCustomer.AsEnumerable() where tCount.Field<long>("ActiveId").Equals(ActiveID) select tCount).Count();
@@ -96,7 +97,7 @@ namespace PIP_Project.WebForms
                                   "'Mobile':" + getObj.Mobile + ", 'Address':'" + getObj.Address + "', 'State':'" + getObj.State + "'" +
                                   ", 'Pin': '" + getObj.Pin + "', 'ActiveId':" + ActiveID + " }";
 
-                var json = File.ReadAllText(HttpContext.Current.Server.MapPath("~/data/Customers.json"));
+                var json = File.ReadAllText(customerPath);
                 var jsonObj = JObject.Parse(json);
                 var CustomerArrary = jsonObj.GetValue("Customer") as JArray;
                 var newCustomer = JObject.Parse(newCustomerJson);
@@ -105,7 +106,7 @@ namespace PIP_Project.WebForms
                 jsonObj["Customer"] = CustomerArrary;                ;
                 string newJsonResult = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObj,
                                        Newtonsoft.Json.Formatting.Indented);
-                File.WriteAllText(HttpContext.Current.Server.MapPath("~/data/Customers.json"), newJsonResult);
+                File.WriteAllText(customerPath, newJsonResult);
                 oResponse.Response.EMessage = "Customer added successfully";
                 oResponse.Response.Result = true;
 
@@ -117,6 +118,40 @@ namespace PIP_Project.WebForms
             }
             _Json = jSerializer.Serialize(oResponse);
             return _Json;
-        }        
+        }
+        [WebMethod]
+        public static string DeleteCustomer(string ActiveId)
+        {
+            string _Result = string.Empty;
+            var json = File.ReadAllText(customerPath);
+            try
+            {
+                var jObject = JObject.Parse(json);
+                JArray CusArray = (JArray)jObject["Customer"];
+                var cusId = Convert.ToInt32(ActiveId);
+
+                if (cusId > 0)
+                {
+                    var CusName = string.Empty;
+                    var CusToDeleted = CusArray.FirstOrDefault(obj => obj["ActiveId"].Value<int>() == cusId);
+
+                    CusArray.Remove(CusToDeleted);
+
+                    string output = Newtonsoft.Json.JsonConvert.SerializeObject(jObject, Newtonsoft.Json.Formatting.Indented);
+                    File.WriteAllText(customerPath, output);
+                }
+                else
+                {
+                    _Result = "Invalid Customer";
+                }
+                _Result = "success";
+            }
+            catch (Exception ex)
+            {
+
+                _Result = ex.Message;
+            }
+            return _Result;
+        }
     }
 }
